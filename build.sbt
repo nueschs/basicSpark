@@ -6,10 +6,19 @@ version := "1.0"
 
 scalaVersion := "2.11.11"
 
-val sparkVersion = "2.1.0"
+val sparkVersion = "2.0.2"
 
 updateOptions := updateOptions.value.withCachedResolution(true)
 parallelExecution in test := false
+
+resolvers += Resolver.sonatypeRepo("releases")
+
+val framelessVersion = "0.3.0"
+
+libraryDependencies ++= List(
+  "org.typelevel" %% "frameless-cats"      % framelessVersion,
+  "org.typelevel" %% "frameless-dataset"   % framelessVersion
+)
 
 resolvers ++= Seq(
   "cloudera" at "https://repository.cloudera.com/artifactory/cloudera-repos/",

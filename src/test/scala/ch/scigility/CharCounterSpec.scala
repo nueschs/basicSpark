@@ -3,6 +3,7 @@ package ch.scigility
 import com.holdenkarau.spark.testing.{DatasetSuiteBase, SharedSparkContext}
 import org.apache.spark.sql.SparkSession
 import org.scalatest.{FunSuite, Matchers}
+import frameless.syntax._
 
 /**
   * Created by snuesch on 15.06.17.
@@ -14,8 +15,8 @@ class CharCounterSpec extends FunSuite with DatasetSuiteBase with Matchers{
   test("CharCount test"){
     val words = Seq("asdf", "jklö", "foo", "bar", "baz")
     val wordsDS = sparkImpl.createDataset(words)
-    val res = CharCounter.countLetters(wordsDS)
-    res.size should be (12)
-    res.values.max should be (3)
+    val res = CharCounter.countLetters(wordsDS.typed)
+    res.count().run() should be (12)
+    res.collect().run().max should be (3)
   }
 }
