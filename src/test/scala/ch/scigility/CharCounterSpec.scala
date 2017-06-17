@@ -15,7 +15,7 @@ class CharCounterSpec extends FunSuite with DatasetSuiteBase with Matchers{
     val words = Seq("asdf", "jklö", "foo", "bar", "baz")
     val wordsDS = sparkImpl.createDataset(words)
     val res = CharCounter.countLetters(wordsDS)
-    res.size should be (12)
-    res.values.max should be (3)
+    res.count should be (12)
+    res.collect.max should be (3)
   }
 }
