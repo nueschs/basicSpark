@@ -2,8 +2,10 @@ pipeline {
   agent any
   stages{
     stage('build') {
-      step {
-        sh 'sbt clean compile test package'
+      steps {
+        step {
+          sh 'sbt clean compile test package'
+        }
       }
     }
   }
