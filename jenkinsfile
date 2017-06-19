@@ -1,6 +1,6 @@
 node {
   stage('outer') {
-    docker.image('p7hb/docker-spark:2.0.2').inside {
+    docker.image('p7hb/docker-spark:2.1.0').inside {
       stage('build all'){
         sh 'sbt clean compile test package'
       }

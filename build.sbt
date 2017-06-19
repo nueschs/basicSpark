@@ -6,7 +6,7 @@ version := "1.0"
 
 scalaVersion := "2.11.11"
 
-val sparkVersion = "2.0.2"
+val sparkVersion = "2.1.0"
 val sparkTestingVersion = sparkVersion + "_0.6.0"
 
 updateOptions := updateOptions.value.withCachedResolution(true)
