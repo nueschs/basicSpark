@@ -4,7 +4,7 @@ pipeline {
     node('docker') {
       stage('all') {
         docker.image('p7hb/docker-spark:2.0.2').inside {
-            sh 'sbt clean compile test package
+            sh 'sbt clean compile test package'
         }
       }
     }
