@@ -6,7 +6,8 @@ version := "1.0"
 
 scalaVersion := "2.11.11"
 
-val sparkVersion = "2.1.0"
+val sparkVersion = "2.0.2"
+val sparkTestingVersion = sparkVersion + "_0.6.0"
 
 updateOptions := updateOptions.value.withCachedResolution(true)
 parallelExecution in test := false
@@ -20,16 +21,13 @@ resolvers ++= Seq(
 )
 
 libraryDependencies ++= Seq(
-  "com.holdenkarau" % "spark-testing-base_2.11" % "2.1.0_0.6.0" % "test",
-  "org.scalatest" %% "scalatest" % "3.0.0" % "test" withSources() withJavadoc(),
-  "org.scalacheck" %% "scalacheck" % "1.10.0" % "test" withSources() withJavadoc(),
-  "org.apache.spark" %% "spark-core" % sparkVersion % "provided" withSources() withJavadoc(),
-  //  "org.apache.spark" %% "spark-streaming" % "1.3.1" % "provided" withSources() withJavadoc(),
-  //  "org.apache.spark" %% "spark-sql" % "1.3.1" % "provided" withSources() withJavadoc(),
-  //  "org.apache.spark" %% " spark-hive" % "1.3.1" % "provided" withSources() withJavadoc(),
-  "org.apache.spark" %% "spark-mllib" % sparkVersion % "provided" withSources() withJavadoc(),
-  //  "org.apache.spark" %% "spark-graphx" % "1.3.1" % "provided" withSources() withJavadoc(),
-  "org.apache.hadoop" % "hadoop-client" % "2.7.3.2.5.3.0-37" % "provided" withJavadoc(),
-  "com.github.scopt" %% "scopt" % "3.2.0"
+  "com.holdenkarau" %% "spark-testing-base" % sparkTestingVersion % "test",
+  "org.scalatest" %% "scalatest" % "3.0.1" % "test",
+  "org.scalacheck" %% "scalacheck" % "1.10.0" % "test",
+  "org.apache.spark" %% "spark-core" % sparkVersion,
+  "org.apache.spark" %% "spark-mllib" % sparkVersion,
+  "org.apache.hadoop" % "hadoop-client" % "2.7.3.2.5.3.0-37",
+  "com.github.scopt" %% "scopt" % "3.2.0",
+  "org.apache.spark" %% "spark-hive" % sparkVersion % "test"
 )
         
