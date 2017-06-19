@@ -4,6 +4,7 @@ pipeline {
     stage('build') {
       step {
         sh 'sbt clean compile test package'
+	archiveArtifacts artifacts: 'target/scala-2.11/*.jar', fingerprint: true 
       }
     }
   }
