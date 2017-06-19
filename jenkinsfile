@@ -2,7 +2,7 @@ pipeline {
   agent any
   stages{
     stage('build') {
-      step {
+      steps {
         sh 'sbt clean compile test package'
 	archiveArtifacts artifacts: 'target/scala-2.11/*.jar', fingerprint: true 
       }
